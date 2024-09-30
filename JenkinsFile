@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                // Clone the repository
+                git 'https://your-repo-url.git'  // Replace with your repository URL
+            }
+        }
+
+        stage('Set Up Python') {
+            steps {
+                // Set up Python
+                script {
+                    sh 'sudo apt-get update'
+                    sh 'sudo apt-get install python3 python3-pip -y'
+                }
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // Install dependencies
+                sh 'pip3 install -r requirements.txt'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                // Run the tests
+                sh 'python3 -m pytest tests/'
+            }
+        }
+    }
+}
