@@ -17,6 +17,9 @@ jobs:
               with:
                  python-version: "3.12.3"
 
+            - name: "list files"
+              run: ls -a
+
             - name: "Clone the repo"
               uses: actions/checkout@v2
 
